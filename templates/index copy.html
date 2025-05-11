@@ -103,7 +103,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      top: calc(54px * 5.5 + 8px * 5 + 24px + 48px + 10px);
+      top: calc(54px * 5.5 + 8px * 5 + 24px + 48px + 10px); /* Moved down below Clear All button */
     }
     .roulette-zero-row {
       display: flex;
@@ -570,22 +570,22 @@
     <!-- Left Video Loop -->
     <div id="leftVideoColumn" style="display:flex;flex-direction:column;gap:10px;margin:14px 18px 0 18px;flex:1;height:100%;min-height:0;max-width:180px;align-self:center;">
       <div id="game1Box" style="background:#22223b;border:2.5px solid #a5b4fc;border-radius:14px;padding:6px;box-sizing:border-box;box-shadow:0 2px 12px #a5b4fc22;display:flex;align-items:center;justify-content:center;flex:1 1 0;min-height:0;width:100%;">
-        <video class="video-loop" src="../static/game1.mp4" autoplay loop muted style="height:100%;width:calc(100% - 12px);object-fit:cover;max-height:none;border-radius:10px;"></video>
+        <video class="video-loop" src="/static/game1.mp4" autoplay loop muted style="height:100%;width:calc(100% - 12px);object-fit:cover;max-height:none;border-radius:10px;"></video>
       </div>
       <div id="game2Box" style="background:#22223b;border:2.5px solid #a5b4fc;border-radius:14px;padding:6px;box-sizing:border-box;box-shadow:0 2px 12px #a5b4fc22;display:flex;align-items:center;justify-content:center;flex:1 1 0;min-height:0;width:100%;">
-        <video class="video-loop" src="../static/game2.mp4" autoplay loop muted style="height:100%;width:calc(100% - 12px);object-fit:cover;max-height:none;border-radius:10px;"></video>
+        <video class="video-loop" src="/static/game2.mp4" autoplay loop muted style="height:100%;width:calc(100% - 12px);object-fit:cover;max-height:none;border-radius:10px;"></video>
       </div>
     </div>
 
     <!-- Center Content -->
     <div class="center-content">
-      <video class="background-video" src="../static/game3.mp4" autoplay loop muted></video>
+      <video class="background-video" src="/static/game3.mp4" autoplay loop muted></video>
       <h1 style="margin-bottom: 10px;">🎲 Eth POP (0-36)</h1>
       <div class="roulette-grid-wrapper">
         <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 4px;">
           <div class="wallet-bar" style="margin-bottom: 10px; text-align: center;">
             <div style="display: flex; flex-direction: column; align-items: center;">
-              <button id="connectBtn" class="wallet-glass-btn" title="Connect Wallet">
+              <button id="connectBtn" class="wallet-glass-btn" onclick="connectWallet()" title="Connect Wallet">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px; vertical-align: middle;">
                   <rect x="2.5" y="6.5" width="17" height="9" rx="3" fill="#fff" fill-opacity="0.25"/>
                   <rect x="2.5" y="6.5" width="17" height="9" rx="3" stroke="#60a5fa" stroke-width="1.3"/>
@@ -604,13 +604,13 @@
         <div class="roulette-grid" id="rouletteGrid">
           <!-- JS will populate 1-36 buttons -->
         </div>
-        <button class="bet-btn random-circle side-random-btn" id="randomBtn" title="Random">
+        <button class="bet-btn random-circle side-random-btn" onclick="betRandom()" title="Random">
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="13" cy="13" r="12" stroke="#fff" stroke-width="2" fill="none"/>
             <path d="M7 9h4v4H7zM15 9h4v4h-4zM7 17h4v4H7zM15 17h4v4h-4z" fill="#fff"/>
           </svg>
         </button>
-        <button class="bet-btn clear-circle side-clear-btn" id="clearBtn" title="Clear All">
+        <button class="bet-btn clear-circle side-clear-btn" onclick="clearAllSelections()" title="Clear All">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="16" cy="16" r="14" stroke="#fff" stroke-width="2" fill="none"/>
             <rect x="10" y="13" width="12" height="10" rx="3" fill="#fff"/>
@@ -620,7 +620,7 @@
             <rect x="19.5" y="16" width="1.5" height="5" fill="#60a5fa"/>
           </svg>
         </button>
-        <button class="bet-btn help-circle side-help-btn" id="helpBtn" title="Help">
+        <button class="bet-btn help-circle side-help-btn" onclick="showHelp()" title="Help">
           ?
         </button>
         <div id="drawnNumberDisplay" style="margin-top:12px; text-align:center; font-size:1.13em; font-weight:600; color:#facc15;"></div>
@@ -631,7 +631,7 @@
           <input type="number" id="bet" step="0.01" min="0.001" class="styled-input" />
         </div>
         <div class="play-bulb-ring">
-          <button class="bet-btn play-diamond" id="playBtn">Play</button>
+          <button class="bet-btn play-diamond" onclick="playLottery()">Play</button>
         </div>
       </div>
     </div>
@@ -645,15 +645,16 @@
         <!-- Waiting list content will be dynamically injected here -->
       </div>
       <div id="gifBox" style="background:#22223b;border:2.5px solid #a5b4fc;border-radius:14px;padding:4px 8px 4px 8px;margin:14px 18px 0 18px;box-shadow:0 2px 12px #a5b4fc22;display:flex;align-items:center;justify-content:center;">
-        <img src="../static/dbc.gif" alt="DBC GIF" style="height:320px;max-height:320px;width:auto;display:block;">
+        <img src="/static/dbc.gif" alt="DBC GIF" style="height:320px;max-height:320px;width:auto;display:block;">
       </div>
+      
     </div>
   </div>
 
   <!-- Help Modal -->
   <div id="helpModal" class="modal">
     <div class="modal-content">
-      <button class="close-btn" id="closeHelpBtn">✕</button>
+      <button class="close-btn" onclick="closeHelp()">✕</button>
       <h2>How to Play Eth POP</h2>
       <p>Welcome to Eth POP, a blockchain-based betting game where you can win ETH by guessing the correct number!</p>
       
@@ -718,22 +719,17 @@
     </div>
   </div>
 
-  <p id="result"></p>
-
   <script>
     // Multi-selectable pentagon buttons for numbers 1-36, star for 0
-    console.log("Script 1: Initializing roulette grid...");
     const grid = document.getElementById('rouletteGrid');
     const zeroRow = document.getElementById('rouletteZeroRow');
     let selectedNumbers = new Set();
     let btnRefs = [];
-
     // Create 0 as star button
     const btnZero = document.createElement('button');
     btnZero.className = 'roulette-btn zero';
     btnZero.innerText = '0';
-    btnZero.addEventListener('click', function() {
-      console.log("Clicked number 0");
+    btnZero.onclick = function() {
       if (selectedNumbers.has(0)) {
         selectedNumbers.delete(0);
         btnZero.classList.remove('selected');
@@ -746,17 +742,15 @@
         btnZero.classList.add('selected');
       }
       updateResult();
-    });
+    };
     zeroRow.appendChild(btnZero);
     btnRefs[0] = btnZero;
-
     // Create 1-36 as pentagon buttons
     for (let i = 1; i <= 36; i++) {
       const btn = document.createElement('button');
       btn.className = 'roulette-btn';
       btn.innerText = i;
-      btn.addEventListener('click', function() {
-        console.log(`Clicked number ${i}`);
+      btn.onclick = function() {
         if (selectedNumbers.has(i)) {
           selectedNumbers.delete(i);
           btn.classList.remove('selected');
@@ -769,27 +763,21 @@
           btn.classList.add('selected');
         }
         updateResult();
-      });
+      };
       grid.appendChild(btn);
       btnRefs[i] = btn;
     }
-
     function updateResult() {
-      console.log("Updating result...");
       document.getElementById('result').innerText = '';
     }
-
     function clearAllSelections() {
-      console.log("Clearing all selections...");
       selectedNumbers.forEach(i => {
         if (btnRefs[i]) btnRefs[i].classList.remove('selected');
       });
       selectedNumbers.clear();
       updateResult();
     }
-
     function betRandom() {
-      console.log("Selecting random numbers...");
       selectedNumbers.clear();
       for (let i = 0; i <= 36; i++) {
         btnRefs[i].classList.remove('selected');
@@ -807,37 +795,26 @@
       });
       updateResult();
     }
-
     // Help Modal Functions
     function showHelp() {
-      console.log("Showing help modal...");
       document.getElementById('helpModal').style.display = 'flex';
     }
-
     function closeHelp() {
-      console.log("Closing help modal...");
       document.getElementById('helpModal').style.display = 'none';
     }
-
-    // Attach event listeners
-    document.getElementById('randomBtn').addEventListener('click', betRandom);
-    document.getElementById('clearBtn').addEventListener('click', clearAllSelections);
-    document.getElementById('helpBtn').addEventListener('click', showHelp);
-    document.getElementById('closeHelpBtn').addEventListener('click', closeHelp);
   </script>
 
+  <p id="result"></p>
+
   <script>
-    console.log("Script 2: Initializing Web3 and contract...");
     let contract;
     let userAddress = null;
-    const contractAddress = "0xaE2036917fCD8523D3b77142Da664116043301fe"; // Replace with your deployed contract address
+    const contractAddress = "0xaE2036917fCD8523D3b77142Da664116043301fe";
 
     async function connectWallet() {
-      console.log("Connecting wallet...");
       const btn = document.getElementById('connectBtn');
       const addrSpan = document.getElementById('walletAddress');
       if (userAddress) {
-        console.log("Disconnecting wallet...");
         userAddress = null;
         addrSpan.innerText = '';
         btn.innerHTML = `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px; vertical-align: middle;"><rect x="2.5" y="6.5" width="17" height="9" rx="3" fill="#fff" fill-opacity="0.25"/><rect x="2.5" y="6.5" width="17" height="9" rx="3" stroke="#60a5fa" stroke-width="1.3"/><rect x="15.5" y="10" width="2.2" height="1.7" rx="0.85" fill="#60a5fa"/></svg><span style="font-weight: 700; font-size: 1.09em; letter-spacing: 0.01em;">Connect Wallet</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 10px; vertical-align: middle;"><path d="M7 4l4 5-4 5" stroke="#60a5fa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -851,9 +828,7 @@
           addrSpan.innerText = userAddress;
           btn.innerHTML = `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px; vertical-align: middle;"><rect x="2.5" y="6.5" width="17" height="9" rx="3" fill="#fff" fill-opacity="0.25"/><rect x="2.5" y="6.5" width="17" height="9" rx="3" stroke="#60a5fa" stroke-width="1.3"/><rect x="15.5" y="10" width="2.2" height="1.7" rx="0.85" fill="#60a5fa"/></svg><span style="font-weight: 700; font-size: 1.09em; letter-spacing: 0.01em;">Disconnect</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 10px; vertical-align: middle;"><path d="M11 4l-4 5 4 5" stroke="#f43f5e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
           btn.title = 'Disconnect Wallet';
-          console.log("Connected address:", userAddress);
         } catch (err) {
-          console.error("Wallet connection failed:", err);
           alert('Could not connect to MetaMask.');
         }
       } else {
@@ -862,7 +837,6 @@
     }
 
     async function loadWaitingList() {
-      console.log("Loading waiting list...");
       try {
         const balanceWei = await web3.eth.getBalance(contractAddress);
         const balanceEth = web3.utils.fromWei(balanceWei, 'ether');
@@ -886,39 +860,24 @@
         html += '</ul>';
         listElem.innerHTML = html;
       } catch (e) {
-        console.error("Waiting list load failed:", e);
         document.getElementById('waitingList').innerHTML = '<strong>Waiting List</strong><br><span style="color:red;">Failed to load.</span>';
       }
     }
 
     window.addEventListener('load', async () => {
-      console.log("Window loaded, initializing Web3...");
       if (window.ethereum) {
         window.web3 = new Web3(window.ethereum);
-        console.log("Web3 initialized:", window.web3);
-        try {
-          const response = await fetch('../static/abi.json');
-          if (!response.ok) throw new Error('Network response was not ok');
-          const abi = await response.json();
-          console.log("ABI loaded:", abi);
-          contract = new web3.eth.Contract(abi, contractAddress);
-          console.log("Contract initialized:", contract);
-          await loadWaitingList();
-        } catch (error) {
-          console.error("Contract initialization failed:", error);
-          alert("Failed to initialize smart contract. Check the console.");
-        }
+        const response = await fetch('/abi');
+        const abi = await response.json();
+        contract = new web3.eth.Contract(abi, contractAddress);
+        console.log("Contract initialized:", contract);
+        await loadWaitingList();
       } else {
         alert("Please install MetaMask!");
       }
     });
 
     async function playLottery() {
-      console.log("Playing lottery...");
-      if (!contract) {
-        alert("Smart contract not initialized. Check console for errors.");
-        return;
-      }
       const guesses = Array.from(selectedNumbers);
       const ethAmount = parseFloat(document.getElementById("bet").value);
 
@@ -960,6 +919,7 @@
           const userGuesses = guesses.map(num => parseInt(num, 10));
           
           const localWin = userGuesses.includes(drawn);
+          
           console.log("Contract reported win:", won);
           console.log("Local verification win:", localWin);
           console.log("Drawn number:", drawn);
@@ -977,10 +937,6 @@
         document.getElementById("drawnNumberDisplay").innerText = "❌ Transaction failed. Check console for details.";
       }
     }
-
-    // Attach event listener for play button
-    document.getElementById('playBtn').addEventListener('click', playLottery);
-    document.getElementById('connectBtn').addEventListener('click', connectWallet);
   </script>
 </body>
 </html>
