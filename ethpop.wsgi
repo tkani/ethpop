@@ -13,4 +13,4 @@ import sys
 sys.path.insert(0, "/var/www/ethpop")
 
 # Import the Flask app instance
-from ethpop import app as application
+from app import app as application
