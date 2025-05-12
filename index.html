@@ -42,10 +42,28 @@
       padding: 24px 8px 8px 8px;
       min-width: 350px;
       min-height: 600px;
-      /* Added for better visibility */
       overflow-y: auto;
-      /* Added to handle overflow */
       position: relative;
+      scrollbar-width: thin;
+      /* Added for Firefox */
+      scrollbar-color: #facc15 #2a2a40;
+      /* Added for Firefox */
+    }
+
+    .center-content::-webkit-scrollbar {
+      width: 8px;
+      /* Added for WebKit browsers */
+      background: #2a2a40;
+    }
+
+    .center-content::-webkit-scrollbar-thumb {
+      background: #facc15;
+      /* Brighter yellow for visibility */
+      border-radius: 8px;
+    }
+
+    .center-content::-webkit-scrollbar-track {
+      background: #2a2a40;
     }
 
     .center-content .background-video {
@@ -195,15 +213,12 @@
       padding: 10px;
       border-radius: 10px;
       flex-wrap: wrap;
-      /* Added to handle overflow on small screens */
     }
 
     .styled-input {
       width: 160px;
       max-width: 100%;
-      /* Added to prevent overflow */
       box-sizing: border-box;
-      /* Include padding in width */
       border-radius: 14px;
       border: 2px solid #fbbf24;
       padding: 12px 18px;
@@ -246,7 +261,6 @@
       width: 92px;
       height: 92px;
       margin: 0 auto;
-      /* Added to center the button */
     }
 
     .bet-btn.play-diamond {
@@ -488,120 +502,48 @@
       overflow-x: auto;
       white-space: nowrap;
       scrollbar-width: thin;
-      scrollbar-color: #a5b4fc #23234a;
-    }
-
-    @media (max-width: 700px) {
-      .main-layout {
-        display: flex;
-        flex-direction: column !important;
-        width: 100vw;
-        min-width: 0;
-        /* Removed fixed min-width */
-        overflow-x: hidden;
-        /* Prevent horizontal scroll */
-      }
-
-      .left-video,
-      .right-video {
-        min-width: 120px !important;
-        max-width: 160px !important;
-        flex: 0 0 120px !important;
-        padding: 0 !important;
-      }
-
-      .center-content {
-        min-width: 280px !important;
-        max-width: 420px !important;
-        flex: 1 1 280px !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 0 !important;
-        min-height: 500px;
-        /* Adjusted for mobile */
-      }
-
-      #contractInfoBox,
-      .waiting-list {
-        margin: 12px 8px 0 8px !important;
-        padding: 10px 6px 8px 6px !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        border-radius: 10px !important;
-        font-size: 0.98em !important;
-      }
-
-      .waiting-list strong {
-        font-size: 1em !important;
-      }
-
-      .waiting-list ul {
-        font-size: 0.96em !important;
-      }
-
-      .bet-btn,
-      .roulette-btn,
-      .bet-btn.clear-circle,
-      .bet-btn.random-circle,
-      .bet-btn.help-circle {
-        min-width: 36px !important;
-        min-height: 36px !important;
-        font-size: 0.89em !important;
-      }
-
-      .styled-input {
-        width: 90vw !important;
-        max-width: 280px;
-        /* Limit max width */
-        font-size: 1em !important;
-        padding: 10px 12px !important;
-      }
-
-      .wallet-bar {
-        margin-bottom: 8px !important;
-      }
-
-      .modal-content {
-        font-size: 0.9em;
-        padding: 15px;
-      }
+      scrollbar-color: #facc15 #22223b;
+      /* Updated for better visibility */
     }
 
     .waiting-list::-webkit-scrollbar {
-      height: 6px;
-      background: #23234a;
+      height: 8px;
+      /* Increased thickness */
+      background: #22223b;
     }
 
     .waiting-list::-webkit-scrollbar-thumb {
-      background: #a5b4fc;
+      background: #facc15;
+      /* Brighter yellow for visibility */
       border-radius: 8px;
     }
 
     .waiting-list::-webkit-scrollbar-track {
-      background: #23234a;
+      background: #22223b;
     }
 
     #contractInfoBox {
       overflow-x: auto;
       white-space: nowrap;
       scrollbar-width: thin;
-      scrollbar-color: #a5b4fc #23234a;
+      scrollbar-color: #facc15 #22223b;
+      /* Updated for better visibility */
     }
 
     #contractInfoBox::-webkit-scrollbar {
-      height: 6px;
-      background: #23234a;
+      height: 8px;
+      /* Increased thickness */
+      background: #22223b;
     }
 
     #contractInfoBox::-webkit-scrollbar-thumb {
-      background: #a5b4fc;
+      background: #facc15;
+      /* Brighter yellow for visibility */
       border-radius: 8px;
     }
 
     #contractInfoBox::-webkit-scrollbar-track {
-      background: #23234a;
+      background: #22223b;
     }
 
     .wallet-bar {
@@ -654,6 +596,80 @@
       max-width: 320px;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+
+    @media (max-width: 700px) {
+      .main-layout {
+        display: flex;
+        flex-direction: column !important;
+        width: 100vw;
+        min-width: 0;
+        overflow-x: hidden;
+      }
+
+      .left-video,
+      .right-video {
+        min-width: 120px !important;
+        max-width: 160px !important;
+        flex: 0 0 120px !important;
+        padding: 0 !important;
+      }
+
+      .center-content {
+        min-width: 280px !important;
+        max-width: 420px !important;
+        flex: 1 1 280px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 !important;
+        min-height: 500px;
+      }
+
+      #contractInfoBox,
+      .waiting-list {
+        margin: 12px 8px 0 8px !important;
+        padding: 10px 6px 8px 6px !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        border-radius: 10px !important;
+        font-size: 0.98em !important;
+      }
+
+      .waiting-list strong {
+        font-size: 1em !important;
+      }
+
+      .waiting-list ul {
+        font-size: 0.96em !important;
+      }
+
+      .bet-btn,
+      .roulette-btn,
+      .bet-btn.clear-circle,
+      .bet-btn.random-circle,
+      .bet-btn.help-circle {
+        min-width: 36px !important;
+        min-height: 36px !important;
+        font-size: 0.89em !important;
+      }
+
+      .styled-input {
+        width: 90vw !important;
+        max-width: 280px;
+        font-size: 1em !important;
+        padding: 10px 12px !important;
+      }
+
+      .wallet-bar {
+        margin-bottom: 8px !important;
+      }
+
+      .modal-content {
+        font-size: 0.9em;
+        padding: 15px;
+      }
     }
 
     @media (max-width: 1000px) {
